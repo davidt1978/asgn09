@@ -2,17 +2,17 @@
 <?php
 require_once("php/my-functions.php");
 
-$from_value = '';
-$from_unit = '';
-$to_value = '';
-$to_unit = '';
+$fromValue = '';
+$fromUnit = '';
+$toValue = '';
+$toUnit = '';
 
 if($_POST['submit']) {
-  $from_value = $_POST['from_value'];
-  $from_unit = $_POST['from_unit'];
-  $to_unit = $_POST['to_unit'];
+  $fromValue = (float)$_POST['fromValue'];
+  $fromUnit = $_POST['fromUnit'];
+  $toUnit = $_POST['toUnit'];
   
-  $to_value = convert_length($from_value, $from_unit, $to_unit);
+  $toValue = convert_length($fromValue, $fromUnit, $toUnit);
 }
 ?>
 
@@ -31,31 +31,31 @@ if($_POST['submit']) {
       <form action="" method="post">
         <div class="entry">
           <label for="from">From:</label>&nbsp;
-          <input type="text" name="from_value" value="<?php echo $from_value; ?>" id="from">&nbsp;
-          <select name="from_unit">
-            <option value="inches"<?php if($from_unit == 'inches') {echo ' selected';} ?>>inches</option>
-            <option value="feet"<?php if($from_unit == 'feet') {echo ' selected';} ?>>feet</option>
-            <option value="yards"<?php if($from_unit == 'yards') {echo ' selected';} ?>>yards</option>
-            <option value="miles"<?php if($from_unit == 'miles') {echo ' selected';} ?>>miles</option>
-            <option value="millimeters"<?php if($from_unit == 'millimeters') {echo ' selected';} ?>>millimeters</option>
-            <option value="centimeters"<?php if($from_unit == 'centimeters') {echo ' selected';} ?>>centimeters</option>
-            <option value="meters"<?php if($from_unit == 'meters') {echo ' selected';} ?>>meters</option>
-            <option value="kilometers"<?php if($from_unit == 'kilometers') {echo ' selected';} ?>>kilometers</option>
+          <input type="text" name="fromValue" value="<?php echo $fromValue; ?>" id="from">&nbsp;
+          <select name="fromUnit">
+            <option value="inches"<?php if($fromUnit == 'inches') {echo ' selected';} ?>>inches</option>
+            <option value="feet"<?php if($fromUnit == 'feet') {echo ' selected';} ?>>feet</option>
+            <option value="yards"<?php if($fromUnit == 'yards') {echo ' selected';} ?>>yards</option>
+            <option value="miles"<?php if($fromUnit == 'miles') {echo ' selected';} ?>>miles</option>
+            <option value="millimeters"<?php if($fromUnit == 'millimeters') {echo ' selected';} ?>>millimeters</option>
+            <option value="centimeters"<?php if($fromUnit == 'centimeters') {echo ' selected';} ?>>centimeters</option>
+            <option value="meters"<?php if($fromUnit == 'meters') {echo ' selected';} ?>>meters</option>
+            <option value="kilometers"<?php if($fromUnit == 'kilometers') {echo ' selected';} ?>>kilometers</option>
           </select>
         </div>
         
         <div class="entry">
           <label for="to">To:</label>&nbsp;
-          <input type="text" name="to_value" value="<?php echo $to_value; ?>" id="to">&nbsp;
-          <select name="to_unit">
-            <option value="inches"<?php if($to_unit == 'inches') {echo ' selected';} ?>>inches</option>
-            <option value="feet"<?php if($to_unit == 'feet') {echo ' selected';} ?>>feet</option>
-            <option value="yards"<?php if($to_unit == 'yards') {echo ' selected';} ?>>yards</option>
-            <option value="miles"<?php if($to_unit == 'miles') {echo ' selected';} ?>>miles</option>
-            <option value="millimeters"<?php if($to_unit == 'millimeters') {echo ' selected';} ?>>millimeters</option>
-            <option value="centimeters"<?php if($to_unit == 'centimeters') {echo ' selected';} ?>>centimeters</option>
-            <option value="meters"<?php if($to_unit == 'meters') {echo ' selected';} ?>>meters</option>
-            <option value="kilometers"<?php if($to_unit == 'kilometers') {echo ' selected';} ?>>kilometers</option>
+          <input type="text" name="to_value" value="<?php echo $toValue; ?>" id="to">&nbsp;
+          <select name="toUnit">
+            <option value="inches"<?php if($toUnit == 'inches') {echo ' selected';} ?>>inches</option>
+            <option value="feet"<?php if($toUnit == 'feet') {echo ' selected';} ?>>feet</option>
+            <option value="yards"<?php if($toUnit == 'yards') {echo ' selected';} ?>>yards</option>
+            <option value="miles"<?php if($toUnit == 'miles') {echo ' selected';} ?>>miles</option>
+            <option value="millimeters"<?php if($toUnit == 'millimeters') {echo ' selected';} ?>>millimeters</option>
+            <option value="centimeters"<?php if($toUnit == 'centimeters') {echo ' selected';} ?>>centimeters</option>
+            <option value="meters"<?php if($toUnit == 'meters') {echo ' selected';} ?>>meters</option>
+            <option value="kilometers"<?php if($toUnit == 'kilometers') {echo ' selected';} ?>>kilometers</option>
           </select>
         </div>
         

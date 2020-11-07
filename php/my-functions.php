@@ -14,32 +14,57 @@ function head_info() {
 
 // Liquid Functions for asgn09
 
-define('LIQUID_TO_GALLON', array(
-  'imperialGallons' => 1,
-  'buckets' => 4,
-  'butts' => 108,
-  'firkins' => 9,
-  'hogsheads' => 54,
-  'pints' => 0.125
-));
-
 if(!isset($_POST['submit'])) {
  $_POST['submit'] = '';
 }
 
 function convert_to_imperialGallons($value, $fromUnit) {
-  if(array_key_exists($fromUnit, LIQUID_TO_GALLON)){
-    return $value * LIQUID_TO_GALLON[$fromUnit];
-  } else {
-    return "Unsupported Unit";
+  switch($fromUnit) {
+    case 'imperialGallons':
+      return $value;
+      break;
+    case 'buckets':
+      return $value * 4;
+      break;
+    case 'butts':
+      return $value * 108;
+      break;
+    case 'firkins':
+      return $value * 9;
+      break;
+    case 'hogsheads':
+      return $value * 54;
+      break;
+    case 'pints':
+      return $value * 0.125;
+      break;
+    default:
+      return "Unsupported Unit";
   }
 }
   
 function convert_from_imperialGallons($value, $toUnit) {
-  if(array_key_exists($toUnit, LIQUID_TO_GALLON)){
-    return $value / LIQUID_TO_GALLON[$toUnit];
-  } else {
-    return "Unsupported Unit";
+  switch($toUnit) {
+    case 'imperialGallons':
+      return $value;
+      break;
+    case 'buckets':
+      return $value / 4;
+      break;
+    case 'butts':
+      return $value / 108;
+      break;
+    case 'firkins':
+      return $value / 9;
+      break;
+    case 'hogsheads':
+      return $value / 54;
+      break;
+    case 'pints':
+      return $value / 0.125;
+      break;
+    default:
+      return "Unsupported Unit";
   }
 }
 
@@ -49,38 +74,69 @@ function convert_liquids($value, $fromUnit, $toUnit) {
   return $newValue;
 }
 
-
-
 // Mathematical Functions from Chapter 1 & 2
-
-define('LENGTH_TO_METER', array(
-  'inches' => 0.0254,
-  'feet' => 0.3048,
-  'yards' => 0.9144,
-  'miles' => 1609.344,
-  'millimeters' => 0.001,
-  'centimeter' => 0.01,
-  'meters' => 1,
-  'kilometer' => 1000,
-  'acres' => 63.614907234075,
-  'hectares' => 100
-));
 
 // Length Functions
 
 function convert_to_meters($value, $fromUnit) {
-  if(array_key_exists($fromUnit, LENGTH_TO_METER)){
-    return $value * LENGTH_TO_METER[$fromUnit];
-  } else {
-    return "Unsupported Unit";
+  switch($fromUnit) {
+    case 'inches':
+      return $value * 0.0254;
+      break;
+    case 'feet':
+      return $value * 0.3048;
+      break;
+    case 'yards':
+      return $value * 0.9144;
+      break;
+    case 'miles':
+      return $value * 1609.344;
+      break;
+    case 'millimeters':
+      return $value * 0.001;
+      break;
+    case 'centimeters':
+      return $value * 0.01;
+      break;
+    case 'meters':
+      return $value;
+      break;
+    case 'kilometers':
+      return $value * 1000;
+      break;
+    default:
+      return "Unsupported Unit";
   }
 }
   
 function convert_from_meters($value, $toUnit) {
-  if(array_key_exists($toUnit, LENGTH_TO_METER)){
-    return $value / LENGTH_TO_METER[$toUnit];
-  } else {
-    return "Unsupported Unit";
+switch($toUnit) {
+    case 'inches':
+      return $value / 0.0254;
+      break;
+    case 'feet':
+      return $value / 0.3048;
+      break;
+    case 'yards':
+      return $value / 0.9144;
+      break;
+    case 'miles':
+      return $value / 1609.344;
+      break;
+    case 'millimeters':
+      return $value / 0.001;
+      break;
+    case 'centimeters':
+      return $value / 0.01;
+      break;
+    case 'meters':
+      return $value;
+      break;
+    case 'kilometers':
+      return $value / 1000;
+      break;
+    default:
+      return "Unsupported Unit";
   }
 }
 
@@ -92,27 +148,83 @@ function convert_length($value, $fromUnit, $toUnit) {
 
 // Area Functions
 
-function convert_to_square_meters($value, $fromUnit) {
-  $fromUnit = str_replace('square_', '', $fromUnit);
-  if(array_key_exists($fromUnit, LENGTH_TO_METER)){
-    return $value * pow(LENGTH_TO_METER[$fromUnit], 2);
-  } else {
-    return "Unsupported Unit";
+function convert_to_squareMeters($value, $fromUnit) {
+  switch($fromUnit) {
+    case 'squareInches':
+      return $value * pow(0.0254, 2);
+      break;
+    case 'squareFeet':
+      return $value * pow(0.3048, 2);
+      break;
+    case 'squareYards':
+      return $value * pow(0.144, 2);
+      break;
+    case 'squareMiles':
+      return $value * pow(1609.344, 2);
+      break;
+    case 'squareMillimeters':
+      return $value * pow(0.001, 2);
+      break;
+    case 'squareCentimeters':
+      return $value * pow(0.01, 2);
+      break;
+    case 'squareMeters':
+      return $value;
+      break;
+    case 'squareKilometers':
+      return $value * pow(1000, 2);
+      break;
+    case 'acres':
+      return $value * 4046.8564224;
+      break;
+    case 'hectares':
+      return $value * 10000;
+      break;
+    default:
+      return "Unsupported Unit";
   }
 }
   
-function convert_from_square_meters($value, $toUnit) {
-  $toUnit = str_replace('square_', '', $toUnit);
-  if(array_key_exists($toUnit, LENGTH_TO_METER)){
-    return $value / pow(LENGTH_TO_METER[$toUnit], 2);
-  } else {
-    return "Unsupported Unit";
+function convert_from_squareMeters($value, $toUnit) {
+  switch($toUnit) {
+    case 'squareInches':
+      return $value / pow(0.0254, 2);
+      break;
+    case 'squareFeet':
+      return $value / pow(0.3048, 2);
+      break;
+    case 'squareYards':
+      return $value / pow(0.9144, 2);
+      break;
+    case 'squareMiles':
+      return $value / pow(1609.344, 2);
+      break;
+    case 'squareMillimeters':
+      return $value / pow(0.001, 2);
+      break;
+    case 'squareCentimeters':
+      return $value / pow(0.01, 2);
+      break;
+    case 'squareMeters':
+      return $value;
+      break;
+    case 'squareKilometers':
+      return $value / pow(1000, 2);
+      break;
+    case 'acres':
+      return $value / 4046.8564224;
+      break;
+    case 'hectares':
+      return $value / 10000;
+      break;
+    default:
+      return "Unsupported Unit";
   }
 }
 
 function convert_area($value, $fromUnit, $toUnit) {
-  $meterValue = convert_to_square_meters ($value, $fromUnit);
-  $newValue = convert_from_square_meters ($meterValue, $toUnit);
+  $meterValue = convert_to_squareMeters ($value, $fromUnit);
+  $newValue = convert_from_squareMeters ($meterValue, $toUnit);
   return $newValue;
 }
 
